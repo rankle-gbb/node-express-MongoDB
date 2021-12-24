@@ -31,21 +31,6 @@ app.use(
 )
 app.use(bodyParser.json())
 app.use('/api/v1', api)
-app.use((req, res, next) => {
-  console.log('reqqq====', req);
-  req.signedCookies['userId'] ? req.signedCookies['userId'] : res.send({ data: "没有权限", code: 0 })
-  req.session.userId ? req.session.userId : res.send({ data: "没有权限", code: 0 })
-  if (req.signedCookies['userId'] != req.session.userId) {
-    // if (!req.sessionID) {
-    console.log("没有权限");
-    res.send({ data: "没有权限", code: 0 })
-  }
-  else {
-    console.log("本次的connect.sid为", req.signedCookies);
-    // console.log("本次的req.sessionID", req.sessionID);
-    next()
-  }
-})
 InitiateMongoServer()
 
 // 监听3000端口
