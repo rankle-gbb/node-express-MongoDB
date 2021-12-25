@@ -139,7 +139,7 @@ router.put('/update', auth, cookie, async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       bodyParam.passWord = await bcrypt.hash(bodyParam.passWord, salt);
     }
-    if(bodyParam.jurisdiction === 0) {
+    if(bodyParam.jurisdiction == 0) {
       bodyParam.jurisdiction = 'superAdmin';
     } else {
       bodyParam.jurisdiction = 'admin';
