@@ -11,9 +11,9 @@ interface ResponseData<T> {
   msg: string,
 }
 
-axios.defaults.headers = {
-  'Content-Type': 'application/json;charset=utf-8'
-}
+// axios.defaults.headers = {
+//   // 'Content-Type': 'application/json;charset=utf-8'
+// }
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? AdminConfig.API_URL : '';
 
@@ -25,7 +25,7 @@ axios.interceptors.request.use(
     // 获取用户token，用于校验
     /* eslint-disable  no-param-reassign */
     if (token) {
-      config.headers.token = token;
+      // config.headers.token = token;
     }
 
     return config;

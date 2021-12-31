@@ -37,7 +37,7 @@ const routes: IRoute[] = [
     children: [
       {
         path: '/system/login',
-        component: React.lazy(() => import('../views/system/login')),
+        // component: React.lazy(() => import('../views/system/login')),
         meta: {
           title: '登录',
         },
@@ -69,7 +69,7 @@ const routes: IRoute[] = [
   },
   {
     path: '/',
-    component: React.lazy(() => import('../layout/index')),
+    // component: React.lazy(() => import('../layout/index')),
     meta: {
       title: '系统',
     },

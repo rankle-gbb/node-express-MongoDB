@@ -1,9 +1,9 @@
 
 const mongoose = require('mongoose');
-
+const MONGODB_URL= 'mongodb://120.78.193.59:27017/testapp'
 const InitiateMongoServer = async () => {
     // 连接mongodb
-    mongoose.connect(process.env.MONGODB_URL, {
+    mongoose.connect(MONGODB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });

@@ -25,7 +25,10 @@ router.get('/', auth, async (req, res) => {
             msg: 'Query user data successfully'
         })
     } catch (error) {
-        res.send('error msg')
+        res.send({
+            status: 500,
+            msg: '查询失败!'
+        })
     }
 })
 
@@ -40,7 +43,10 @@ router.get('/:id', auth, async (req, res) => {
             msg: 'Query data according to user id succeeded!'
         })
     } catch (error) {
-        res.send('error msg')
+        res.send({
+            status: 500,
+            msg: '查询失败!'
+        })
     }
 })
 
@@ -119,7 +125,10 @@ async (req, res) => {
 
     } catch (error) {
         console.log(error.message);
-        res.status(500).send("Error in Saving");
+        res.send({
+            status: 500,
+            msg: '创建失败!'
+        })
     }
   }
 )
@@ -139,7 +148,7 @@ router.put('/update', auth, cookie, async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       bodyParam.passWord = await bcrypt.hash(bodyParam.passWord, salt);
     }
-    if(bodyParam.jurisdiction == 0) {
+    if(bodyParam.jurisdiction == '0') {
       bodyParam.jurisdiction = 'superAdmin';
     } else {
       bodyParam.jurisdiction = 'admin';
@@ -175,7 +184,10 @@ router.delete('/delete', auth, cookie, async (req, res) => {
             msg: 'Delete user successfully!'
         })
     } catch (error) {
-        res.send('error')
+        res.send({
+            status: 500,
+            msg: '删除失败!'
+        })
     }
 })
 
